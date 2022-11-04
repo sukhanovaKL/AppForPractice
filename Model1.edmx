@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище practica_5Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="InternetPrice">
+          <Key>
+            <PropertyRef Name="InternetPricesId" />
+          </Key>
+          <Property Name="InternetPricesId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="CostMinute" Type="int" Nullable="false" />
+          <Property Name="PreferentialCost(at20to2)" Type="int" Nullable="false" />
+          <Property Name="PreferentialCost(at2to6)" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KlientsInfo">
+          <Key>
+            <PropertyRef Name="KlientId" />
+          </Key>
+          <Property Name="KlientId" Type="int" Nullable="false" />
+          <Property Name="ComputerNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateStart" Type="date" Nullable="false" />
+          <Property Name="TimeStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="DateEnd" Type="date" Nullable="false" />
+          <Property Name="TimeEnd" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="PhoneOrganization" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateStart" Type="date" Nullable="false" />
+          <Property Name="TimeStart" Type="time" Precision="7" Nullable="false" />
+          <Property Name="DateEnd" Type="date" Nullable="false" />
+          <Property Name="TimeEnd" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CoutMinutes" Type="int" Nullable="false" />
+          <Property Name="InternetPricesId" Type="int" Nullable="false" />
+          <Property Name="TotalCost" Type="int" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FIO_Operator" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ShiftNumber" Type="int" Nullable="false" />
+          <Property Name="KlientId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Receipt__Interne__4E88ABD4">
+          <End Role="InternetPrice" Type="Self.InternetPrice" Multiplicity="1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InternetPrice">
+              <PropertyRef Name="InternetPricesId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="InternetPricesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Receipt__KlientI__4D94879B">
+          <End Role="KlientsInfo" Type="Self.KlientsInfo" Multiplicity="1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KlientsInfo">
+              <PropertyRef Name="KlientId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="KlientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище practica_5ModelContainer">
+          <EntitySet Name="InternetPrice" EntityType="Self.InternetPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KlientsInfo" EntityType="Self.KlientsInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Receipt__Interne__4E88ABD4" Association="Self.FK__Receipt__Interne__4E88ABD4">
+            <End Role="InternetPrice" EntitySet="InternetPrice" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Receipt__KlientI__4D94879B" Association="Self.FK__Receipt__KlientI__4D94879B">
+            <End Role="KlientsInfo" EntitySet="KlientsInfo" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="practica_5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="InternetPrice">
+          <Key>
+            <PropertyRef Name="InternetPricesId" />
+          </Key>
+          <Property Name="InternetPricesId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CostMinute" Type="Int32" Nullable="false" />
+          <Property Name="PreferentialCost_at20to2_" Type="Int32" Nullable="false" />
+          <Property Name="PreferentialCost_at2to6_" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Receipt" Relationship="Self.FK__Receipt__Interne__4E88ABD4" FromRole="InternetPrice" ToRole="Receipt" />
+        </EntityType>
+        <EntityType Name="KlientsInfo">
+          <Key>
+            <PropertyRef Name="KlientId" />
+          </Key>
+          <Property Name="KlientId" Type="Int32" Nullable="false" />
+          <Property Name="ComputerNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeEnd" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Receipt" Relationship="Self.FK__Receipt__KlientI__4D94879B" FromRole="KlientsInfo" ToRole="Receipt" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="ReceiptId" />
+          </Key>
+          <Property Name="ReceiptId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneOrganization" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeStart" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeEnd" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CoutMinutes" Type="Int32" Nullable="false" />
+          <Property Name="InternetPricesId" Type="Int32" Nullable="false" />
+          <Property Name="TotalCost" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FIO_Operator" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShiftNumber" Type="Int32" Nullable="false" />
+          <Property Name="KlientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="InternetPrice" Relationship="Self.FK__Receipt__Interne__4E88ABD4" FromRole="Receipt" ToRole="InternetPrice" />
+          <NavigationProperty Name="KlientsInfo" Relationship="Self.FK__Receipt__KlientI__4D94879B" FromRole="Receipt" ToRole="KlientsInfo" />
+        </EntityType>
+        <Association Name="FK__Receipt__Interne__4E88ABD4">
+          <End Role="InternetPrice" Type="Self.InternetPrice" Multiplicity="1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InternetPrice">
+              <PropertyRef Name="InternetPricesId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="InternetPricesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Receipt__KlientI__4D94879B">
+          <End Role="KlientsInfo" Type="Self.KlientsInfo" Multiplicity="1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KlientsInfo">
+              <PropertyRef Name="KlientId" />
+            </Principal>
+            <Dependent Role="Receipt">
+              <PropertyRef Name="KlientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="practica_5Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="InternetPrice" EntityType="Self.InternetPrice" />
+          <EntitySet Name="KlientsInfo" EntityType="Self.KlientsInfo" />
+          <EntitySet Name="Receipt" EntityType="Self.Receipt" />
+          <AssociationSet Name="FK__Receipt__Interne__4E88ABD4" Association="Self.FK__Receipt__Interne__4E88ABD4">
+            <End Role="InternetPrice" EntitySet="InternetPrice" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Receipt__KlientI__4D94879B" Association="Self.FK__Receipt__KlientI__4D94879B">
+            <End Role="KlientsInfo" EntitySet="KlientsInfo" />
+            <End Role="Receipt" EntitySet="Receipt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище practica_5ModelContainer" CdmEntityContainer="practica_5Entities">
+          <EntitySetMapping Name="InternetPrice">
+            <EntityTypeMapping TypeName="practica_5Model.InternetPrice">
+              <MappingFragment StoreEntitySet="InternetPrice">
+                <ScalarProperty Name="InternetPricesId" ColumnName="InternetPricesId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CostMinute" ColumnName="CostMinute" />
+                <ScalarProperty Name="PreferentialCost_at20to2_" ColumnName="PreferentialCost(at20to2)" />
+                <ScalarProperty Name="PreferentialCost_at2to6_" ColumnName="PreferentialCost(at2to6)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KlientsInfo">
+            <EntityTypeMapping TypeName="practica_5Model.KlientsInfo">
+              <MappingFragment StoreEntitySet="KlientsInfo">
+                <ScalarProperty Name="KlientId" ColumnName="KlientId" />
+                <ScalarProperty Name="ComputerNumber" ColumnName="ComputerNumber" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receipt">
+            <EntityTypeMapping TypeName="practica_5Model.Receipt">
+              <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneOrganization" ColumnName="PhoneOrganization" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="TimeStart" ColumnName="TimeStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="TimeEnd" ColumnName="TimeEnd" />
+                <ScalarProperty Name="CoutMinutes" ColumnName="CoutMinutes" />
+                <ScalarProperty Name="InternetPricesId" ColumnName="InternetPricesId" />
+                <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="FIO_Operator" ColumnName="FIO_Operator" />
+                <ScalarProperty Name="ShiftNumber" ColumnName="ShiftNumber" />
+                <ScalarProperty Name="KlientId" ColumnName="KlientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b5c8af9bfa1f448ebf9c3bec41b7b480" Name="Diagram1">
+        <EntityTypeShape EntityType="practica_5Model.InternetPrice" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="practica_5Model.KlientsInfo" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="practica_5Model.Receipt" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="practica_5Model.FK__Receipt__Interne__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="practica_5Model.FK__Receipt__KlientI__4D94879B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

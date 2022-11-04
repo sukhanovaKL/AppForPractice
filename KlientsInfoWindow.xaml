@@ -1,0 +1,67 @@
+﻿<Window x:Class="AppForPractice.KlientsInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppForPractice"
+        mc:Ignorable="d"
+        Title="Информация о клиентах" Height="600" Width="1200"
+        Background="MistyRose">
+    <Grid>
+        <ListView x:Name="data" Grid.Row="1" Width="1190" Height="530" VerticalAlignment="Top" Background="MistyRose">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel>
+                    </StackPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="0.3" BorderBrush="Black">
+                        <Grid Width="1170">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.5*"></RowDefinition>
+                                <RowDefinition Height="0.5*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Content="№" Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+                            <Label FontSize="14" FontFamily="Times New Roman" Content="{Binding KlientId}" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+
+                            <Label FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Content="Номер ком-ра" Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+                            <Label FontSize="14" FontFamily="Times New Roman" Content="{Binding ComputerNumber}" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+
+                            <Label FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Content="IP адрес" Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+                            <Label FontSize="14" FontFamily="Times New Roman" Content="{Binding IPAddress}" Grid.Column="2" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+
+                            <Label FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Content="Дата начала сое-ния" Grid.Column="3" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+                            <Label FontSize="14" FontFamily="Times New Roman" Content="{Binding DateStart}" Grid.Column="3" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+
+                            <Label FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Content="Время начала сое-ния" Grid.Column="4" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+                            <Label FontSize="14" FontFamily="Times New Roman" Content="{Binding TimeStart}" Grid.Column="4" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+
+                            <Label FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Content="Дата окончания сое-ния" Grid.Column="5" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+                            <Label FontSize="14" FontFamily="Times New Roman" Content="{Binding DateEnd}" Grid.Column="5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+
+                            <Label FontSize="14" FontFamily="Times New Roman" FontWeight="Bold" Content="Время окончания сое-ния" Grid.Column="6" Grid.Row="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+                            <Label FontSize="14" FontFamily="Times New Roman" Content="{Binding TimeEnd}" Grid.Column="6" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
+
+                            <Button FontSize="14" FontFamily="Times New Roman" Background="Lavender" Content="Удалить" Grid.Column="7" Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="100" Height="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="DeleteButton_Click"></Button>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button FontSize="14" FontFamily="Times New Roman" Background="Lavender" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="150" Height="30" Content="На главную" Click="Button_Click"></Button>
+        <Button FontSize="14" FontFamily="Times New Roman" Background="Lavender" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Width="150" Height="30" Content="Создать запись" Click="AddButton_Click"></Button>
+
+    </Grid>
+</Window>

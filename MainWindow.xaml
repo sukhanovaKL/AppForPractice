@@ -1,0 +1,25 @@
+﻿<Window x:Class="AppForPractice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppForPractice"
+        mc:Ignorable="d"
+        Title="Главная страница" Height="400" Width="750"
+        Background="MistyRose">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Times New Roman" Content="Оплата услуг центра доступа в Интернет"></Label>
+        <Button x:Name="TrarifsButton" Background="Lavender" Grid.Row="1" Grid.Column="0" Width="200" Height="50" Content="Тарифы" FontSize="18" FontFamily="Times New Roman" Click="TrarifsButton_Click"></Button>
+        <Button x:Name="KlientsButton" Background="Lavender" Grid.Row="2" Grid.Column="0" Width="200" Height="50" Content="Информация о клиентах" FontSize="18" FontFamily="Times New Roman" Click="KlientsButton_Click"></Button>
+    </Grid>
+</Window>
