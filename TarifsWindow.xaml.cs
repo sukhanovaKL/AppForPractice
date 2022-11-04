@@ -45,9 +45,11 @@ namespace AppForPractice
 
         private void PrintButton_Click(object sender, RoutedEventArgs e)
         {
+            var allItems = db.InternetPrice.ToList();
+
             var app = new Word.Application();
             Word.Document document = app.Documents.Add();
-            var allItems = db.InternetPrice.ToList();
+
             Word.Paragraph paragraph = document.Paragraphs.Add();
             Word.Range range = paragraph.Range;
             range.Text = "Тарифы";
@@ -56,7 +58,7 @@ namespace AppForPractice
 
             Word.Paragraph tableParagraph = document.Paragraphs.Add();
             Word.Range tableRange = tableParagraph.Range;
-            Word.Table tarifsTable = document.Tables.Add(tableRange, allItems.Count + 1, 5);
+            Word.Table tarifsTable = document.Tables.Add(tableRange, allItems.Count() + 1, 5);
 
             tarifsTable.Borders.InsideLineStyle = tarifsTable.Borders.OutsideLineStyle =
             Word.WdLineStyle.wdLineStyleSingle;
@@ -80,6 +82,7 @@ namespace AppForPractice
 
             foreach (var item in allItems)
             {
+
                 cellRange = tarifsTable.Cell(i + 1, 1).Range;
                 cellRange.Text = item.InternetPricesId.ToString();
                 cellRange.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
@@ -96,9 +99,11 @@ namespace AppForPractice
                 cellRange.Text = item.PreferentialCost_at2to6_.ToString();
                 cellRange.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
                 i++;
+
             }
             app.Visible = true;
-            document.SaveAs2(@"Acer:\outputFilePdf.pdf", Word.WdExportFormat.wdExportFormatPDF);
+            document.SaveAs2(@"D:\outputFilePdf.pdf", Word.WdExportFormat.wdExportFormatPDF);
+            MessageBox.Show("Успешно");
         }
     }
 }
